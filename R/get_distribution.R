@@ -48,7 +48,7 @@ get_distribution <- function(genus = NULL, species = NULL, subspecies = NULL,
     distrib <- sf::st_as_sf(distrib, crs = 4326, coords = c("lng", "lat"))
   }
 
-  invisible(distrib)
+  return(distrib)
 
 
 }

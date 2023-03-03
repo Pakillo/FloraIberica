@@ -63,12 +63,14 @@ map_distribution <- function(distrib.sf = NULL,
   }
 
   if (nrow(ntaxa) == 1) {
-    map_one_taxon(distrib.sf, colour = colour, include.name = include.name, ...)
+    mapa <- map_one_taxon(distrib.sf, colour = colour, include.name = include.name, ...)
   }
 
   if (nrow(ntaxa) > 1) {
-    map_many_taxa(distrib.sf, facet = facet, colour = colour, ...)
+    mapa <- map_many_taxa(distrib.sf, facet = facet, colour = colour, ...)
   }
+
+  return(mapa)
 
 }
 

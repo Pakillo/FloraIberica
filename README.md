@@ -48,6 +48,23 @@ is_endemic(genus = "Aconitum", species = "napellus",
 
 ``` r
 get_distribution("Abies", "pinsapo")
+#> Simple feature collection with 30 features and 3 fields
+#> Geometry type: POINT
+#> Dimension:     XY
+#> Bounding box:  xmin: -5.522 ymin: 36.438 xmax: -4.401 ymax: 36.991
+#> Geodetic CRS:  WGS 84
+#> First 10 features:
+#>     Genus Species Subspecies              geometry
+#> 213 Abies pinsapo       <NA> POINT (-5.519 36.704)
+#> 214 Abies pinsapo       <NA> POINT (-5.522 36.794)
+#> 215 Abies pinsapo       <NA> POINT (-5.404 36.616)
+#> 216 Abies pinsapo       <NA> POINT (-5.407 36.706)
+#> 217 Abies pinsapo       <NA>  POINT (-5.41 36.796)
+#> 218 Abies pinsapo       <NA> POINT (-5.413 36.887)
+#> 219 Abies pinsapo       <NA> POINT (-5.287 36.438)
+#> 220 Abies pinsapo       <NA> POINT (-5.292 36.619)
+#> 221 Abies pinsapo       <NA> POINT (-5.298 36.799)
+#> 222 Abies pinsapo       <NA> POINT (-5.303 36.979)
 ```
 
 ### Making distribution maps
@@ -58,6 +75,8 @@ get_distribution("Abies", "pinsapo")
 laurus.sf <- get_distribution("Laurus", "nobilis")
 map_distribution(laurus.sf)
 ```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
 #### Many taxa
 
