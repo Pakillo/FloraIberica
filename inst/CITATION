@@ -1,0 +1,27 @@
+citHeader("If you use FloraIberica, please cite both the data source and the package as:")
+
+citEntry(
+  entry    = "Article",
+  title    = "Atlas of the vascular flora of the Iberian Peninsula biodiversity hotspot (AFLIBER)",
+  author   = "Ramos‐Gutiérrez, Ignacio and Lima, Herlander and Pajarón, Santiago and Romero‐Zarco, Carlos and Sáez, Llorenç and Pataro, Luciano and Molina‐Venegas, Rafael and Rodríguez, Miguel Á. and Moreno‐Saiz, Juan Carlos",
+  journal  = "Global Ecology and Biogeography",
+  year     = 2021,
+  volume   = 30,
+  pages    = "1951--1957",
+  url      = "https://onlinelibrary.wiley.com/doi/10.1111/geb.13363",
+  textVersion = paste("Ramos-Gutiérrez, I., Lima, H., Pajarón, S., Romero-Zarco, C., Sáez, L., Pataro, L., Molina-Venegas, R., Rodríguez, M. Á., & Moreno-Saiz, J. C. (2021). Atlas of the vascular flora of the Iberian Peninsula biodiversity hotspot (AFLIBER). Global Ecology and Biogeography, 30, 1951– 1957. https://doi.org/10.1111/geb.13363")
+)
+
+
+citEntry(
+  entry = "Manual",
+  title = "FloraIberica: Taxonomic information and distribution data for all the plant species present in the Iberian Peninsula and/or Balearic Islands",
+  author = "Francisco Rodríguez-Sánchez",
+  year = 2023,
+  url = "https://pakillo.github.io/FloraIberica",
+  textVersion = paste("Rodríguez-Sánchez Francisco. 2023. FloraIberica: Taxonomic information and distribution data for all the plant species present in the Iberian Peninsula and/or Balearic Islands. https://pakillo.github.io/FloraIberica")
+
+)
+
+
+
