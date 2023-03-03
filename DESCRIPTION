@@ -1,13 +1,14 @@
 Package: FloraIberica
-Title: Taxonomic information and distribution data for all the plant species present
-    in the Iberian Peninsula and/or Balearic Islands.
-Version: 0.0.0.9000
+Title: Taxonomic information and distribution data for all the vascular plants present
+    in the Iberian Peninsula and/or Balearic Islands
+Version: 0.0.1
 Authors@R: 
     person("Francisco", "Rodríguez-Sánchez", , "f.rodriguez.sanc@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7981-1599"))
 Description: Check which plant taxa are present and/or endemic, 
     and get detailed (10x10 km) distribution maps for all the plants present
-    in the Iberian Peninsula and/or Balearic Islands, from genus to species level. 
+    in the Iberian Peninsula and/or Balearic Islands, from genus to subspecies level, 
+    based on the AFLIBER database (https://doi.org/10.1111/geb.13363).
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -23,3 +24,4 @@ Imports:
 Depends: 
     R (>= 2.10)
 LazyData: true
+LazyDataCompression: bzip2

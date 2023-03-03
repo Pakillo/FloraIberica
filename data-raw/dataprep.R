@@ -10,6 +10,7 @@ IberianPeninsula <- st_as_sf(rnaturalearthhires::countries10) |>
   st_crop(c(xmin = -10, xmax = 4.33, ymin = 35.8, ymax = 43.77)) |>
   st_geometry()
 #plot(IberianPeninsula)
+# usethis::use_data(IberianPeninsula)
 save(IberianPeninsula, file = "data/IberianPeninsula.rda")
 
 
@@ -28,8 +29,9 @@ download.file("https://iramosgutierrez.github.io/afliber/database/AFLIBER_Checkl
 
 
 ## Read species data
-Species <- readr::read_csv("data-raw/AFLIBER_Checklist.csv")
-save(Species, file = "data/Species.rda")
+Taxa <- readr::read_csv("data-raw/AFLIBER_Checklist.csv")
+usethis::use_data(Taxa)
+# save(Taxa, file = "data/Taxa.rda")
 
 ## Read distribution data
 distr <- readr::read_csv("data-raw/AFLIBER_Distributions.csv")
@@ -51,7 +53,8 @@ lonlat$lat <- round(lonlat$lat, digits = 3)
 lonlat$lng <- round(lonlat$lng, digits = 3)
 distr <- data.frame(distr, lonlat)
 Distributions <- subset(distr, select = c(Genus, Species, Subspecies, lng, lat))
-save(Distributions, file = "data/Distributions.rda")
+# save(Distributions, file = "data/Distributions.rda")
+usethis::use_data(Distributions)
 
 #########################################################
 

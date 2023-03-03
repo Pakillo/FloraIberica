@@ -32,13 +32,13 @@ is_endemic <- function(genus = NULL, species = NULL, subspecies = NULL, gbif.id 
     }
   }
 
-  data("Species")
+  # data("Taxa")
 
   ## Find out
 
   if (!is.null(gbif.id)) {
 
-    df <- subset(Species, GBIF_id %in% gbif.id)
+    df <- subset(Taxa, GBIF_id %in% gbif.id)
     out <- tapply(df$Endemic, df$GBIF_id, function(x) {all(x)})
 
   }
@@ -47,19 +47,19 @@ is_endemic <- function(genus = NULL, species = NULL, subspecies = NULL, gbif.id 
 
     if (is.null(species) & is.null(subspecies)) {
       # To be an endemic genus, all spp must be endemic
-      df <- subset(Species, Genus %in% genus)
+      df <- subset(Taxa, Genus %in% genus)
       out <- tapply(df$Endemic, df$Genus, function(x) {all(x)})
     }
 
     if (!is.null(species) & is.null(subspecies)) {
       # To be an endemic species, all subspp must be endemic
-      df <- subset(Species, Genus %in% genus & Species %in% species)
+      df <- subset(Taxa, Genus %in% genus & Species %in% species)
       out <- tapply(df$Endemic, df$Species, function(x) {all(x)})
       names(out) <- paste(genus, names(out))
     }
 
     if (!is.null(subspecies)) {
-      df <- subset(Species, Genus %in% genus & Species %in% species & Subspecies %in% subspecies)
+      df <- subset(Taxa, Genus %in% genus & Species %in% species & Subspecies %in% subspecies)
       out <- tapply(df$Endemic, df$Subspecies, function(x) {all(x)})
       names(out) <- paste(genus, species, names(out))
     }

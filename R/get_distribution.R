@@ -24,7 +24,7 @@ get_distribution <- function(genus = NULL, species = NULL, subspecies = NULL,
 
   ## Filter data
 
-  data("Distributions")
+  # data("Distributions")
 
   if (is.null(species) & is.null(subspecies)) {
     distrib <- subset(Distributions, Genus %in% genus)

@@ -54,7 +54,7 @@ map_distribution <- function(distrib.sf = NULL,
   distrib.sf$Taxon <- paste(distrib.sf$Genus, distrib.sf$Species, distrib.sf$Subspecies)
   distrib.sf$Taxon <- gsub("NA", "", distrib.sf$Taxon)
 
-  data("IberianPeninsula")
+  # data("IberianPeninsula")
 
   ntaxa <- unique.data.frame(sf::st_drop_geometry(distrib.sf))
 

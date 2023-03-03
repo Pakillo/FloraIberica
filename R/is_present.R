@@ -23,11 +23,11 @@ is_present <- function(genus = NULL,
                        subspecies = NULL,
                        gbif.id = NULL) {
 
-  data("Species")
+  # data("Taxa")
 
   if (!is.null(gbif.id)) {
 
-    out <- gbif.id %in% Species$GBIF_id
+    out <- gbif.id %in% Taxa$GBIF_id
     names(out) <- gbif.id
 
   }
@@ -54,15 +54,15 @@ is_present <- function(genus = NULL,
 
     ## Find
     if (is.null(species) & is.null(subspecies)) {
-      out <- genus %in% Species$Genus
+      out <- genus %in% Taxa$Genus
     }
 
     if (!is.null(species) & is.null(subspecies)) {
-      out <- genus %in% Species$Genus & species %in% Species$Species
+      out <- genus %in% Taxa$Genus & species %in% Taxa$Species
     }
 
     if (!is.null(subspecies)) {
-      out <- genus %in% Species$Genus & species %in% Species$Species & subspecies %in% Species$Subspecies
+      out <- genus %in% Taxa$Genus & species %in% Taxa$Species & subspecies %in% Taxa$Subspecies
     }
 
     ## Get taxon name
