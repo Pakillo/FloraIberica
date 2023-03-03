@@ -18,37 +18,76 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of FloraIberica is to ...
+FloraIberica facilitates checking taxonomic and distribution data for the c. 6500 vascular plant species present in the Iberian Peninsula and Balearic Islands, based on the [AFLIBER database](https://doi.org/10.1111/geb.13363).
 
 ## Installation
 
 You can install the development version of FloraIberica like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+remotes::install_github("Pakillo/FloraIberica")
 ```
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
+## Examples
 
 ```{r example}
 library(FloraIberica)
-## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+### Checking if taxa are present
 
-```{r cars}
-summary(cars)
+```{r}
+is_present(genus = "Laurus", species = c("nobilis", "azorica"))
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
+### Checking if taxa are endemic
 
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
+```{r}
+is_endemic(genus = "Aconitum", species = "napellus", 
+           subspecies = c("vulgare", "castellanum", "lusitanicum"))
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+### Getting the distribution of plant taxa
+
+```{r}
+get_distribution("Abies", "pinsapo")
+```
+
+
+### Making distribution maps
+
+#### Single taxon
+
+```{r}
+laurus.sf <- get_distribution("Laurus", "nobilis")
+map_distribution(laurus.sf)
+```
+
+
+#### Many taxa
+
+Iberian *Abies*: 
+
+```{r}
+abies.sf <- get_distribution("Abies")
+map_distribution(abies.sf)
+map_distribution(abies.sf, facet = TRUE, ncol = 1)
+```
+
+Iberian Pines: 
+
+```{r}
+library(ggplot2)
+pinus <- get_distribution("Pinus")
+mapa <- map_distribution(pinus, facet = TRUE, ncol = 2)
+mapa + theme(axis.text = element_text(size = 6))
+
+```
+
+
+## Citation
+
+```{r results='asis', cache = FALSE}
+print(citation("FloraIberica"), style = "text")
+```
+

@@ -15,11 +15,11 @@ citEntry(
 
 citEntry(
   entry = "Manual",
-  title = "FloraIberica: Taxonomic information and distribution data for all the plant species present in the Iberian Peninsula and/or Balearic Islands",
+  title = "FloraIberica: Taxonomic information and distribution data for the vascular plant species present in the Iberian Peninsula and/or Balearic Islands",
   author = "Francisco Rodríguez-Sánchez",
   year = 2023,
   url = "https://pakillo.github.io/FloraIberica",
-  textVersion = paste("Rodríguez-Sánchez Francisco. 2023. FloraIberica: Taxonomic information and distribution data for all the plant species present in the Iberian Peninsula and/or Balearic Islands. https://pakillo.github.io/FloraIberica")
+  textVersion = paste("Rodríguez-Sánchez Francisco. 2023. FloraIberica: Taxonomic information and distribution data for the vascular plant species present in the Iberian Peninsula and/or Balearic Islands. https://pakillo.github.io/FloraIberica")
 
 )
 

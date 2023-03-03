@@ -95,8 +95,7 @@ map_one_taxon <- function(distrib.sf = NULL,
       labs(title = distrib.sf$Taxon)
   }
 
-  print(mapa)
-  invisible(mapa)
+  return(mapa)
 
 }
 
@@ -132,8 +131,7 @@ map_many_taxa <- function(distrib.sf = NULL,
 
   }
 
-  print(mapa)
-  invisible(mapa)
+  return(mapa)
 
 
 }
