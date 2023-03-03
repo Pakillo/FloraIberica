@@ -1,14 +1,25 @@
 Package: FloraIberica
-Title: What the Package Does (One Line, Title Case)
+Title: Taxonomic information and distribution data for all the plant species present
+    in the Iberian Peninsula and/or Balearic Islands.
 Version: 0.0.0.9000
 Authors@R: 
     person("Francisco", "Rodríguez-Sánchez", , "f.rodriguez.sanc@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7981-1599"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Description: Check which plant taxa are present and/or endemic, 
+    and get detailed (10x10 km) distribution maps for all the plants present
+    in the Iberian Peninsula and/or Balearic Islands, from genus to species level. 
+License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 URL: https://github.com/Pakillo/FloraIberica
 BugReports: https://github.com/Pakillo/FloraIberica/issues
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Imports: 
+    ggplot2,
+    sf
+Depends: 
+    R (>= 2.10)
+LazyData: true
