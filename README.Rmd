@@ -18,17 +18,15 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-FloraIberica facilitates checking taxonomic and distribution data for the c. 6500 vascular plant species present in the Iberian Peninsula and Balearic Islands, based on the [AFLIBER database](https://doi.org/10.1111/geb.13363).
+`FloraIberica` R package facilitates checking taxonomic and distribution data for the c. 6500 vascular plants present in the Iberian Peninsula and Balearic Islands, based on the [AFLIBER database](https://doi.org/10.1111/geb.13363).
 
 ## Installation
-
-You can install the development version of FloraIberica like so:
 
 ``` r
 remotes::install_github("Pakillo/FloraIberica")
 ```
 
-## Examples
+## Usage
 
 ```{r example}
 library(FloraIberica)
@@ -44,10 +42,12 @@ is_present(genus = "Laurus", species = c("nobilis", "azorica"))
 
 ```{r}
 is_endemic(genus = "Aconitum", species = "napellus", 
-           subspecies = c("vulgare", "castellanum", "lusitanicum"))
+           subspecies = c("castellanum", "lusitanicum"))
 ```
 
 ### Getting the distribution of plant taxa
+
+Returns sf or dataframe:
 
 ```{r}
 get_distribution("Abies", "pinsapo")
@@ -59,29 +59,29 @@ get_distribution("Abies", "pinsapo")
 #### Single taxon
 
 ```{r}
-laurus.sf <- get_distribution("Laurus", "nobilis")
-map_distribution(laurus.sf)
+laurus <- get_distribution("Laurus", "nobilis")
+map_distribution(laurus)
 ```
 
 
 #### Many taxa
 
-Iberian *Abies*: 
+Distribution of Iberian *Abies*:
 
 ```{r}
-abies.sf <- get_distribution("Abies")
-map_distribution(abies.sf)
-map_distribution(abies.sf, facet = TRUE, ncol = 1)
+abies <- get_distribution("Abies")
+map_distribution(abies)
+map_distribution(abies, facet = TRUE, ncol = 1)
+map_distribution(abies, taxo.level = "genus")
 ```
 
 Iberian Pines: 
 
 ```{r}
-library(ggplot2)
 pinus <- get_distribution("Pinus")
-mapa <- map_distribution(pinus, facet = TRUE, ncol = 2)
-mapa + theme(axis.text = element_text(size = 6))
-
+library(ggplot2)
+map_distribution(pinus, facet = TRUE, ncol = 2) + 
+  theme(axis.text = element_text(size = 6))
 ```
 
 
@@ -90,4 +90,5 @@ mapa + theme(axis.text = element_text(size = 6))
 ```{r results='asis', cache = FALSE}
 print(citation("FloraIberica"), style = "text")
 ```
+
 
