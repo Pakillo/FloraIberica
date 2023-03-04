@@ -59,8 +59,7 @@ get_distribution("Abies", "pinsapo")
 #### Single taxon
 
 ```{r}
-laurus <- get_distribution("Laurus", "nobilis")
-map_distribution(laurus)
+map_distribution(genus = "Laurus", species = "nobilis")
 ```
 
 

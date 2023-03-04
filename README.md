@@ -70,8 +70,7 @@ get_distribution("Abies", "pinsapo")
 #### Single taxon
 
 ``` r
-laurus <- get_distribution("Laurus", "nobilis")
-map_distribution(laurus)
+map_distribution(genus = "Laurus", species = "nobilis")
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
