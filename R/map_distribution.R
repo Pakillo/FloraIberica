@@ -4,6 +4,8 @@
 #'
 #' @param distrib.sf An sf object as returned by [get_distribution()].
 #' @inheritParams is_present
+#' @param taxo.level character Taxonomic level to show in the map. Either genus,
+#' species (default) or subspecies.
 #' @param facet Logical. For multiple taxa, make a single map with all taxa together,
 #' or make a multipanel (facetted) figure with one panel per taxa?
 #' @param colour character. When there is >1 taxon, only used if facet = TRUE.
@@ -18,18 +20,20 @@
 #' @export
 #'
 #' @examples
-#' laurus.sf <- get_distribution("Laurus", "nobilis")
-#' map_distribution(laurus.sf)
+#' laurus <- get_distribution("Laurus", "nobilis")
+#' map_distribution(laurus)
 #'
 #' map_distribution(genus = "Laurus", species = "nobilis")
 #'
-#' abies.sf <- get_distribution("Abies")
-#' map_distribution(abies.sf)
-#' map_distribution(abies.sf, facet = TRUE, ncol = 1)
+#' abies <- get_distribution("Abies")
+#' map_distribution(abies)
+#' map_distribution(abies, facet = TRUE, ncol = 1)
+#' map_distribution(abies, taxo.level = "genus")
 map_distribution <- function(distrib.sf = NULL,
                              genus = NULL,
                              species = NULL,
                              subspecies = NULL,
+                             taxo.level = "species",
                              facet = FALSE,
                              colour = "medium sea green",
                              include.name = TRUE,
@@ -37,6 +41,12 @@ map_distribution <- function(distrib.sf = NULL,
                              ) {
 
   ## Checks
+
+  stopifnot(is.character(taxo.level))
+
+  if (!taxo.level %in% c("genus", "species", "subspecies")) {
+    stop("taxo.level must be one of genus, species, or subspecies")
+  }
 
   if (is.null(distrib.sf) & is.null(genus)) {
     stop("Either distrib.sf or genus must be provided at least")
@@ -49,6 +59,14 @@ map_distribution <- function(distrib.sf = NULL,
   if (is.null(distrib.sf)) {
     distrib.sf <- get_distribution(genus = genus, species = species,
                                    subspecies = subspecies, sf = TRUE)
+  }
+
+  if (taxo.level == "species") {
+    distrib.sf$Subspecies <- NA
+  }
+
+  if (taxo.level == "genus") {
+    distrib.sf$Species <- NA
   }
 
   distrib.sf$Taxon <- paste(distrib.sf$Genus, distrib.sf$Species, distrib.sf$Subspecies)
@@ -126,7 +144,7 @@ map_many_taxa <- function(distrib.sf = NULL,
 
     mapa <- ggplot() +
       facet_wrap(~Taxon, ...) +
-      geom_sf(col = colour, data = distrib.sf, pch = 15) +
+      geom_sf(col = colour, data = distrib.sf, pch = 15, size = 0.8) +
       geom_sf(data = IberianPeninsula, fill = NA) +
       theme_bw() +
       theme(strip.background = element_blank())

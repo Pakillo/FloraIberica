@@ -9,6 +9,7 @@ map_distribution(
   genus = NULL,
   species = NULL,
   subspecies = NULL,
+  taxo.level = "species",
   facet = FALSE,
   colour = "medium sea green",
   include.name = TRUE,
@@ -25,6 +26,9 @@ If >1 species, they must all belong to the same genus.}
 
 \item{subspecies}{character. Optional. One or more subspecies names to check for presence.
 If >1 subspecies, they must all belong to the same species.}
+
+\item{taxo.level}{character Taxonomic level to show in the map. Either genus,
+species (default) or subspecies.}
 
 \item{facet}{Logical. For multiple taxa, make a single map with all taxa together,
 or make a multipanel (facetted) figure with one panel per taxa?}
@@ -44,12 +48,13 @@ A map and ggplot2 object
 Provide either an sf object or genus, species, subspecies...
 }
 \examples{
-laurus.sf <- get_distribution("Laurus", "nobilis")
-map_distribution(laurus.sf)
+laurus <- get_distribution("Laurus", "nobilis")
+map_distribution(laurus)
 
 map_distribution(genus = "Laurus", species = "nobilis")
 
-abies.sf <- get_distribution("Abies")
-map_distribution(abies.sf)
-map_distribution(abies.sf, facet = TRUE, ncol = 1)
+abies <- get_distribution("Abies")
+map_distribution(abies)
+map_distribution(abies, facet = TRUE, ncol = 1)
+map_distribution(abies, taxo.level = "genus")
 }
