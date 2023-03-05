@@ -1,6 +1,7 @@
 #' Map taxa distributions
 #'
-#' Provide either an sf object or genus, species, subspecies...
+#' Provide either an `sf` object (as returned by [get_distribution()])
+#' or genus, species, subspecies...
 #'
 #' @param distrib.sf An sf object as returned by [get_distribution()].
 #' @inheritParams is_present
@@ -71,8 +72,6 @@ map_distribution <- function(distrib.sf = NULL,
 
   distrib.sf$Taxon <- paste(distrib.sf$Genus, distrib.sf$Species, distrib.sf$Subspecies)
   distrib.sf$Taxon <- gsub("NA", "", distrib.sf$Taxon)
-
-  # data("IberianPeninsula")
 
   ntaxa <- unique.data.frame(sf::st_drop_geometry(distrib.sf))
 

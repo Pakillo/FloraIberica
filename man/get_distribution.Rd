@@ -10,10 +10,12 @@ get_distribution(genus = NULL, species = NULL, subspecies = NULL, sf = TRUE)
 \item{genus}{character. Required. One or more genera to check for presence.}
 
 \item{species}{character. Optional. One or more species names to check for presence.
-If >1 species, they must all belong to the same genus.}
+The length of \code{genus} must equal that of \code{species}, unless length(genus) == 1,
+in which case it will be assumed that all species belong to that same genus.}
 
 \item{subspecies}{character. Optional. One or more subspecies names to check for presence.
-If >1 subspecies, they must all belong to the same species.}
+The length of \code{species} must equal that of \code{subspecies}, unless length(species) == 1,
+in which case it will be assumed that all subspecies belong to that same species.}
 
 \item{sf}{Logical. Return a spatial (sf) or a plain dataframe?}
 }

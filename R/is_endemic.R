@@ -19,7 +19,8 @@
 #' is_endemic("Aconitum", "napellus", c("vulgare", "castellanum", "lusitanicum"))
 is_endemic <- function(genus = NULL, species = NULL, subspecies = NULL, gbif.id = NULL) {
 
-  ## Checks
+  ## Checks ##
+
   if (!is.null(gbif.id)) {
     if (!all(is_present(gbif.id = gbif.id))) {
       stop("One or more taxa not present in the database. Please check with is_present")
@@ -32,9 +33,8 @@ is_endemic <- function(genus = NULL, species = NULL, subspecies = NULL, gbif.id 
     }
   }
 
-  # data("Taxa")
 
-  ## Find out
+  ## Find out if they are endemic ##
 
   if (!is.null(gbif.id)) {
 

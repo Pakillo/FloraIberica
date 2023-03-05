@@ -4,9 +4,11 @@
 #'
 #' @param genus character. Required. One or more genera to check for presence.
 #' @param species character. Optional. One or more species names to check for presence.
-#' If >1 species, they must all belong to the same genus.
+#' The length of `genus` must equal that of `species`, unless length(genus) == 1,
+#' in which case it will be assumed that all species belong to that same genus.
 #' @param subspecies character. Optional. One or more subspecies names to check for presence.
-#' If >1 subspecies, they must all belong to the same species.
+#' The length of `species` must equal that of `subspecies`, unless length(species) == 1,
+#' in which case it will be assumed that all subspecies belong to that same species.
 #' @param gbif.id character. Optional.
 #'
 #' @return A logical vector
@@ -23,7 +25,6 @@ is_present <- function(genus = NULL,
                        subspecies = NULL,
                        gbif.id = NULL) {
 
-  # data("Taxa")
 
   if (!is.null(gbif.id)) {
 
@@ -34,25 +35,46 @@ is_present <- function(genus = NULL,
 
   if (is.null(gbif.id)) {
 
-    ## Checks
+    ## Checks ##
 
     if (is.null(genus)) {
       stop("genus must be provided")
     }
 
-    if (!is.null(species) & length(genus) > 1) {
-      stop("If providing species, only one genus allowed per query")
-    }
 
-    if (!is.null(subspecies) & is.null(species)) {
+    if (!is.null(subspecies)) {
+
+      if (is.null(species)) {
       stop("If providing subspecies, species must be provided too")
+      }
+
+      if (length(species) == 1) {
+        # if there's only one species, assume all subspecies belong to that species
+        species <- rep(species, length.out = length(subspecies))
+      }
+
+      stopifnot(length(species) == length(subspecies))
+
     }
 
-    if (!is.null(subspecies) & length(species) > 1) {
-      stop("If providing subspecies, only one species allowed per query")
+
+
+    if (!is.null(species)) {
+
+      if (length(genus) == 1) {
+        # if there's only one genus, assume all species belong to that genus
+        genus <- rep(genus, length.out = length(species))
+      }
+
+      stopifnot(length(genus) == length(species))
+
     }
 
-    ## Find
+
+
+
+    ## Find out if taxa are present ##
+
     if (is.null(species) & is.null(subspecies)) {
       out <- genus %in% Taxa$Genus
     }

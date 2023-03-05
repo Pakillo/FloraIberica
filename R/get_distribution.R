@@ -16,15 +16,14 @@
 get_distribution <- function(genus = NULL, species = NULL, subspecies = NULL,
                              sf = TRUE) {
 
-  ## Checks
+  ## Checks ##
+
   if (!all(is_present(genus = genus, species = species, subspecies = subspecies))) {
     stop("One or more taxa not present in the database. Please check with is_present")
   }
 
 
   ## Filter data
-
-  # data("Distributions")
 
   if (is.null(species) & is.null(subspecies)) {
     distrib <- subset(Distributions, Genus %in% genus)

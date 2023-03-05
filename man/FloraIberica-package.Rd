@@ -4,9 +4,9 @@
 \name{FloraIberica-package}
 \alias{FloraIberica}
 \alias{FloraIberica-package}
-\title{FloraIberica: Taxonomic information and distribution data for all the vascular plants present in the Iberian Peninsula and/or Balearic Islands}
+\title{FloraIberica: Taxonomic and distribution data for all the vascular plants present in the Iberian Peninsula and/or Balearic Islands}
 \description{
-Check which plant taxa are present and/or endemic, and get detailed (10x10 km) distribution maps for all the vascular plants present in the Iberian Peninsula and/or Balearic Islands, from genus to subspecies level, based on the AFLIBER database (https://doi.org/10.1111/geb.13363).
+Check which plant taxa are present and/or endemic, and get detailed (10x10 km) distribution maps for all the vascular plants present in the Iberian Peninsula and Balearic Islands, from genus to subspecies level, based on the AFLIBER database (https://doi.org/10.1111/geb.13363).
 }
 \seealso{
 Useful links:
