@@ -4,11 +4,19 @@
 # FloraIberica
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/Pakillo/FloraIberica/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Pakillo/FloraIberica/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/Pakillo/FloraIberica/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Pakillo/FloraIberica?branch=master)
+[![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![Project Status: Active - The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 <!-- badges: end -->
 
-`FloraIberica` R package facilitates checking taxonomic and distribution
-data for the c. 6500 vascular plants present in the Iberian Peninsula
-and Balearic Islands, based on the [AFLIBER
+`FloraIberica` R package facilitates access to taxonomic and
+distribution data for the c. 6500 vascular plants present in the Iberian
+Peninsula and Balearic Islands, based on the [AFLIBER
 database](https://doi.org/10.1111/geb.13363).
 
 ## Installation
@@ -112,16 +120,31 @@ map_distribution(pinus, facet = TRUE, ncol = 2) +
 ## Citation
 
 ``` r
-print(citation("FloraIberica"), style = "text")
+citation("FloraIberica")
+
+If you use FloraIberica, please cite both the data source and the
+package as:
+
+  Ramos-Gutiérrez, I., Lima, H., Pajarón, S., Romero-Zarco, C., Sáez,
+  L., Pataro, L., Molina-Venegas, R., Rodríguez, M. Á., & Moreno-Saiz,
+  J. C. (2021). Atlas of the vascular flora of the Iberian Peninsula
+  biodiversity hotspot (AFLIBER). Global Ecology and Biogeography, 30,
+  1951– 1957. https://doi.org/10.1111/geb.13363
+
+  Rodríguez-Sánchez Francisco. 2023. FloraIberica: Taxonomic and
+  distribution data for the vascular plants of the Iberian Peninsula
+  and Balearic Islands. https://pakillo.github.io/FloraIberica
+
+To see these entries in BibTeX format, use 'print(<citation>,
+bibtex=TRUE)', 'toBibtex(.)', or set
+'options(citation.bibtex.max=999)'.
 ```
 
-Ramos‐Gutiérrez, Ignacio, Lima, Herlander, Pajarón, Santiago,
-Romero‐Zarco, Carlos, Sáez, Llorenç, Pataro, Luciano, Molina‐Venegas,
-Rafael, Rodríguez, Á. M, Moreno‐Saiz, Carlos J (2021). “Atlas of the
-vascular flora of the Iberian Peninsula biodiversity hotspot (AFLIBER).”
-*Global Ecology and Biogeography*, *30*, 1951-1957.
-<https://doi.org/10.1111/geb.13363>.
+## Funding
 
-Rodríguez-Sánchez F (2023). *FloraIberica: Taxonomic and distribution
-data for the vascular plants of the Iberian Peninsula and Balearic
-Islands*. <https://pakillo.github.io/FloraIberica>.
+The development of this software has been funded by Fondo Europeo de
+Desarrollo Regional (FEDER) and Consejería de Transformación Económica,
+Industria, Conocimiento y Universidades of Junta de Andalucía (proyecto
+US-1381388 led by Francisco Rodríguez Sánchez, Universidad de Sevilla).
+
+![](https://ecologyr.github.io/workshop/images/logos.png)

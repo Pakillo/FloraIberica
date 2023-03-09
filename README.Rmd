@@ -16,9 +16,13 @@ knitr::opts_chunk$set(
 # FloraIberica
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/Pakillo/FloraIberica/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Pakillo/FloraIberica/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/Pakillo/FloraIberica/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Pakillo/FloraIberica?branch=master)
+`r badger::badge_lifecycle("stable")`
+`r badger::badge_repostatus("Active")`
 <!-- badges: end -->
 
-`FloraIberica` R package facilitates checking taxonomic and distribution data for the c. 6500 vascular plants present in the Iberian Peninsula and Balearic Islands, based on the [AFLIBER database](https://doi.org/10.1111/geb.13363).
+`FloraIberica` R package facilitates access to taxonomic and distribution data for the c. 6500 vascular plants present in the Iberian Peninsula and Balearic Islands, based on the [AFLIBER database](https://doi.org/10.1111/geb.13363).
 
 ## Installation
 
@@ -86,8 +90,15 @@ map_distribution(pinus, facet = TRUE, ncol = 2) +
 
 ## Citation
 
-```{r results='asis', cache = FALSE}
-print(citation("FloraIberica"), style = "text")
+```{r comment=NA}
+citation("FloraIberica")
 ```
+
+
+## Funding
+
+The development of this software has been funded by Fondo Europeo de Desarrollo Regional (FEDER) and Consejería de Transformación Económica, Industria, Conocimiento y Universidades of Junta de Andalucía (proyecto US-1381388 led by Francisco Rodríguez Sánchez, Universidad de Sevilla).
+
+![](https://ecologyr.github.io/workshop/images/logos.png)
 
 

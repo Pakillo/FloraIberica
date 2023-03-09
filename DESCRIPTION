@@ -1,6 +1,6 @@
 Package: FloraIberica
 Title: Taxonomic and distribution data for all the vascular plants present
-    in the Iberian Peninsula and/or Balearic Islands
+    in the Iberian Peninsula and Balearic Islands
 Version: 0.0.1
 Authors@R: 
     person("Francisco", "Rodríguez-Sánchez", , "f.rodriguez.sanc@gmail.com", role = c("aut", "cre"),
