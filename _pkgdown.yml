@@ -1,0 +1,16 @@
+url: https://pakillo.github.io/FloraIberica/
+template:
+  bootstrap: 5
+reference:
+- title: Functions
+- contents:
+  - is_present
+  - is_endemic
+  - get_distribution
+  - map_distribution
+- title: Datasets
+- contents:
+  - Taxa
+  - Distributions
+  - IberianPeninsula
+
