@@ -63,7 +63,7 @@ get_distribution("Abies", "pinsapo")
 #### Single taxon
 
 ```{r laurus}
-map_distribution(genus = "Laurus", species = "nobilis")
+map_distribution(genus = "Laurus", species = "nobilis", size = 0.9)
 ```
 
 
@@ -75,7 +75,7 @@ Distribution of Iberian *Abies*:
 abies <- get_distribution("Abies")
 map_distribution(abies)
 map_distribution(abies, facet = TRUE, ncol = 1)
-map_distribution(abies, taxo.level = "genus", size = 0.8)
+map_distribution(abies, taxo.level = "genus", size = 0.9)
 ```
 
 Iberian Pines: 
@@ -99,14 +99,14 @@ head(get_checklist(site))
 
 The site can be a polygon, so you can easily obtain a list of the plants present within a given area (e.g. town, province, natural reserve):
 
-```{r}
+```{r cache = TRUE}
 cadiz <- mapSpain::esp_get_prov_siane("Cadiz", epsg = "4326")
 head(get_checklist(cadiz))
 ```
 
 You can also obtain an `sf` object rather than a dataframe, so you know where exactly each plant occurs within or near that polygon (with a resolution of 10x10 km inherited from the AFLIBER database):
 
-```{r cadiz.qpyr, message=FALSE}
+```{r cadiz.qpyr, message=FALSE, cache = TRUE}
 cadiz.qpyr <- get_checklist(cadiz, sf = TRUE) |> 
   dplyr::filter(Genus == "Quercus", Species == "pyrenaica")
 

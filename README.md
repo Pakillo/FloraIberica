@@ -78,7 +78,7 @@ get_distribution("Abies", "pinsapo")
 #### Single taxon
 
 ``` r
-map_distribution(genus = "Laurus", species = "nobilis")
+map_distribution(genus = "Laurus", species = "nobilis", size = 0.9)
 ```
 
 <img src="man/figures/README-laurus-1.png" width="100%" />
@@ -101,7 +101,7 @@ map_distribution(abies, facet = TRUE, ncol = 1)
 <img src="man/figures/README-abies-2.png" width="100%" />
 
 ``` r
-map_distribution(abies, taxo.level = "genus", size = 0.8)
+map_distribution(abies, taxo.level = "genus", size = 0.9)
 ```
 
 <img src="man/figures/README-abies-3.png" width="100%" />
