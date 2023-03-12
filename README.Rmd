@@ -62,7 +62,7 @@ get_distribution("Abies", "pinsapo")
 
 #### Single taxon
 
-```{r}
+```{r laurus}
 map_distribution(genus = "Laurus", species = "nobilis")
 ```
 
@@ -71,21 +71,51 @@ map_distribution(genus = "Laurus", species = "nobilis")
 
 Distribution of Iberian *Abies*:
 
-```{r}
+```{r abies}
 abies <- get_distribution("Abies")
 map_distribution(abies)
 map_distribution(abies, facet = TRUE, ncol = 1)
-map_distribution(abies, taxo.level = "genus")
+map_distribution(abies, taxo.level = "genus", size = 0.8)
 ```
 
 Iberian Pines: 
 
-```{r}
+```{r pines}
 pinus <- get_distribution("Pinus")
 library(ggplot2)
 map_distribution(pinus, facet = TRUE, ncol = 2) + 
   theme(axis.text = element_text(size = 6))
 ```
+
+
+### Get a checklist of the plants present near a point or polygon
+
+If you want to know the plants near a given site, just pass the coordinates to [get_checklist](https://pakillo.github.io/FloraIberica/reference/get_checklist.html):
+
+```{r}
+site <- c(-5, 40)
+head(get_checklist(site))
+```
+
+The site can be a polygon, so you can easily obtain a list of the plants present within a given area (e.g. town, province, natural reserve):
+
+```{r}
+cadiz <- mapSpain::esp_get_prov_siane("Cadiz", epsg = "4326")
+head(get_checklist(cadiz))
+```
+
+You can also obtain an `sf` object rather than a dataframe, so you know where exactly each plant occurs within or near that polygon (with a resolution of 10x10 km inherited from the AFLIBER database):
+
+```{r cadiz.qpyr, message=FALSE}
+cadiz.qpyr <- get_checklist(cadiz, sf = TRUE) |> 
+  dplyr::filter(Genus == "Quercus", Species == "pyrenaica")
+
+ggplot() +
+  geom_sf(data = cadiz) +
+  geom_sf(data = cadiz.qpyr) +
+  theme_bw()
+```
+
 
 
 ## Citation

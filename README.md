@@ -81,7 +81,7 @@ get_distribution("Abies", "pinsapo")
 map_distribution(genus = "Laurus", species = "nobilis")
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-laurus-1.png" width="100%" />
 
 #### Many taxa
 
@@ -92,19 +92,19 @@ abies <- get_distribution("Abies")
 map_distribution(abies)
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+<img src="man/figures/README-abies-1.png" width="100%" />
 
 ``` r
 map_distribution(abies, facet = TRUE, ncol = 1)
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-2.png" width="100%" />
+<img src="man/figures/README-abies-2.png" width="100%" />
 
 ``` r
-map_distribution(abies, taxo.level = "genus")
+map_distribution(abies, taxo.level = "genus", size = 0.8)
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-3.png" width="100%" />
+<img src="man/figures/README-abies-3.png" width="100%" />
 
 Iberian Pines:
 
@@ -115,7 +115,56 @@ map_distribution(pinus, facet = TRUE, ncol = 2) +
   theme(axis.text = element_text(size = 6))
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+<img src="man/figures/README-pines-1.png" width="100%" />
+
+### Get a checklist of the plants present near a point or polygon
+
+If you want to know the plants near a given site, just pass the
+coordinates to
+[get_checklist](https://pakillo.github.io/FloraIberica/reference/get_checklist.html):
+
+``` r
+site <- c(-5, 40)
+head(get_checklist(site))
+#>         Genus          Species     Subspecies
+#> 1        Acer   monspessulanum monspessulanum
+#> 2 Adenocarpus           aureus           <NA>
+#> 4 Adenocarpus      complicatus           <NA>
+#> 5      Allium scorzonerifolium           <NA>
+#> 6       Alnus        glutinosa           <NA>
+#> 7     Alyssum      fastigiatum           <NA>
+```
+
+The site can be a polygon, so you can easily obtain a list of the plants
+present within a given area (e.g. town, province, natural reserve):
+
+``` r
+cadiz <- mapSpain::esp_get_prov_siane("Cadiz", epsg = "4326")
+head(get_checklist(cadiz))
+#>       Genus        Species     Subspecies
+#> 1     Abies        pinsapo           <NA>
+#> 11     Acer monspessulanum monspessulanum
+#> 21     Acer         opalus     granatense
+#> 22   Aceras anthropophorum           <NA>
+#> 33 Achillea       ageratum           <NA>
+#> 57 Achillea        odorata           <NA>
+```
+
+You can also obtain an `sf` object rather than a dataframe, so you know
+where exactly each plant occurs within or near that polygon (with a
+resolution of 10x10 km inherited from the AFLIBER database):
+
+``` r
+cadiz.qpyr <- get_checklist(cadiz, sf = TRUE) |> 
+  dplyr::filter(Genus == "Quercus", Species == "pyrenaica")
+
+ggplot() +
+  geom_sf(data = cadiz) +
+  geom_sf(data = cadiz.qpyr) +
+  theme_bw()
+```
+
+<img src="man/figures/README-cadiz.qpyr-1.png" width="100%" />
 
 ## Citation
 
@@ -125,9 +174,9 @@ citation("FloraIberica")
 If you use FloraIberica, please cite both the data source and the
 package as:
 
-  Ramos-Gutiérrez, I., Lima, H., Pajarón, S., Romero-Zarco, C., Sáez,
-  L., Pataro, L., Molina-Venegas, R., Rodríguez, M. Á., & Moreno-Saiz,
-  J. C. (2021). Atlas of the vascular flora of the Iberian Peninsula
+  Ramos-Gutiérrez I., Lima H., Pajarón S., Romero-Zarco C., Sáez L.,
+  Pataro L., Molina-Venegas R., Rodríguez M. Á. & Moreno-Saiz J. C.
+  (2021). Atlas of the vascular flora of the Iberian Peninsula
   biodiversity hotspot (AFLIBER). Global Ecology and Biogeography, 30,
   1951– 1957. https://doi.org/10.1111/geb.13363
 

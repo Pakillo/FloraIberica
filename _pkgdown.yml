@@ -8,6 +8,7 @@ reference:
   - is_endemic
   - get_distribution
   - map_distribution
+  - get_checklist
 - title: Datasets
 - contents:
   - Taxa
