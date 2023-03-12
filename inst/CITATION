@@ -9,7 +9,7 @@ citEntry(
   volume   = 30,
   pages    = "1951--1957",
   url      = "https://doi.org/10.1111/geb.13363",
-  textVersion = paste("Ramos-Gutiérrez, I., Lima, H., Pajarón, S., Romero-Zarco, C., Sáez, L., Pataro, L., Molina-Venegas, R., Rodríguez, M. Á., & Moreno-Saiz, J. C. (2021). Atlas of the vascular flora of the Iberian Peninsula biodiversity hotspot (AFLIBER). Global Ecology and Biogeography, 30, 1951– 1957. https://doi.org/10.1111/geb.13363")
+  textVersion = paste("Ramos-Gutiérrez I., Lima H., Pajarón S., Romero-Zarco C., Sáez L., Pataro L., Molina-Venegas R., Rodríguez M. Á. & Moreno-Saiz J. C. (2021). Atlas of the vascular flora of the Iberian Peninsula biodiversity hotspot (AFLIBER). Global Ecology and Biogeography, 30, 1951– 1957. https://doi.org/10.1111/geb.13363")
 )
 
 
