@@ -1,7 +1,7 @@
 #' Map taxa distributions
 #'
-#' Provide either an `sf` object (as returned by [get_distribution()])
-#' or genus, species, subspecies...
+#' Get a map with the distribution of one or more taxa. Must provide either
+#' an `sf` object (as returned by [get_distribution()]) or genus, species, subspecies...
 #'
 #' @param distrib.sf An sf object as returned by [get_distribution()].
 #' @inheritParams is_present
@@ -73,6 +73,7 @@ map_distribution <- function(distrib.sf = NULL,
   distrib.sf$Taxon <- paste(distrib.sf$Genus, distrib.sf$Species, distrib.sf$Subspecies)
   distrib.sf$Taxon <- gsub("NA", "", distrib.sf$Taxon)
 
+  distrib.sf <- subset(distrib.sf, select = -UTM.cell)
   ntaxa <- unique.data.frame(sf::st_drop_geometry(distrib.sf))
 
   if (nrow(ntaxa) < 1) {

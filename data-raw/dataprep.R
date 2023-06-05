@@ -52,16 +52,14 @@ lonlat <- mgrs::mgrs_to_latlng(distr$UTM, include_mgrs_ref = FALSE)
 lonlat$lat <- round(lonlat$lat, digits = 3)
 lonlat$lng <- round(lonlat$lng, digits = 3)
 distr <- data.frame(distr, lonlat)
-Distributions <- subset(distr, select = c(Genus, Species, Subspecies, lng, lat))
+Distributions <- subset(distr, select = c(Genus, Species, Subspecies, UTM.cell, lng, lat))
 # save(Distributions, file = "data/Distributions.rda")
-usethis::use_data(Distributions)
+usethis::use_data(Distributions, overwrite = TRUE)
 
 #########################################################
 
 
 
-plot(lau.sf$geometry, pch = 15, col = "medium sea green", main = "Laurus nobilis")
-plot(sp.pt, add = T, border = "grey30")
 
 
 

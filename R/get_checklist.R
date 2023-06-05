@@ -6,6 +6,8 @@
 #' an `sf` object with a single point coordinate, or a polygon `sf` object.
 #' @param sf Logical. If FALSE (default) return a dataframe with the checklist.
 #' If TRUE, return an `sf` object with the coordinates where each taxa is found.
+#' Note these point coordinates represent the centre of 10 km resolution UTM grid cells,
+#' not the actual location of these plants.
 #'
 #' @return A dataframe or sf object
 #' @note As the original data (AFLIBER database) have 10-km resolution, the
@@ -36,9 +38,9 @@ get_checklist <- function(zone = NULL, sf = FALSE) {
     ## check that zone coordinates fall within AFLIBER data
     bb.zone <- sf::st_bbox(zone)
     bb.ip <- sf::st_bbox(IberianPeninsula)
-    if (bb.zone$xmin < bb.ip$xmin -0.1 |
-        bb.zone$xmax > bb.ip$xmax +0.1 |
-        bb.zone$ymin < bb.ip$ymin -0.1 |
+    if (bb.zone$xmin < bb.ip$xmin - 0.1 |
+        bb.zone$xmax > bb.ip$xmax + 0.1 |
+        bb.zone$ymin < bb.ip$ymin - 0.1 |
         bb.zone$ymax > bb.ip$ymax + 0.1
         ) {
       stop("zone coordinates fall out of the study area")
@@ -79,6 +81,7 @@ get_checklist <- function(zone = NULL, sf = FALSE) {
 
     if (!isTRUE(sf)) {
       spp <- sf::st_drop_geometry(spp)
+      spp <- subset(spp, select = -UTM.cell)
       spp <- unique.data.frame(spp)
     }
 

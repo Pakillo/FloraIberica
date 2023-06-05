@@ -1,2 +1,2 @@
 utils::globalVariables(c("Distributions", "GBIF_id", "Genus", "IberianPeninsula",
-                         "Species", "Subspecies", "Taxa", "Taxon"))
+                         "Species", "Subspecies", "Taxa", "Taxon", "UTM.cell"))
