@@ -20,9 +20,12 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/Pakillo/FloraIberica/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Pakillo/FloraIberica?branch=master)
 `r badger::badge_lifecycle("stable")`
 `r badger::badge_repostatus("Active")`
+[![HitCount](https://hits.dwyl.com/Pakillo/FloraIberica.svg?style=flat-square)](https://hits.dwyl.com/Pakillo/FloraIberica)
+[![HitCount: unique users](https://hits.dwyl.com/Pakillo/FloraIberica.svg?style=flat-square&show=unique)](https://hits.dwyl.com/Pakillo/FloraIberica)
+
 <!-- badges: end -->
 
-`FloraIberica` R package facilitates access to taxonomic and distribution data for the c. 6500 vascular plants present in the Iberian Peninsula and Balearic Islands, based on the [AFLIBER database](https://doi.org/10.1111/geb.13363).
+`FloraIberica` R package facilitates access to taxonomic and distribution data for the c. 6500 vascular plants present in the Iberian Peninsula and Balearic Islands, based on the [AFLIBER database](https://doi.org/10.1111/geb.13363). This atlas provides the distribution of each taxon in a 10 x 10 km UTM grid. 
 
 ## Installation
 
@@ -36,7 +39,7 @@ remotes::install_github("Pakillo/FloraIberica")
 library(FloraIberica)
 ```
 
-### Checking if taxa are present
+### Checking if taxa are present in the Iberian Peninsula and/or Balearic Islands
 
 ```{r}
 is_present(genus = "Laurus", species = c("nobilis", "azorica"))
@@ -51,7 +54,7 @@ is_endemic(genus = "Aconitum", species = "napellus",
 
 ### Getting the distribution of plant taxa
 
-Returns sf or dataframe:
+Returns sf or dataframe with the coordinates of the centre of 10 x 10 km UTM grid cells where taxa are present:
 
 ```{r}
 get_distribution("Abies", "pinsapo")
@@ -71,14 +74,25 @@ map_distribution(genus = "Laurus", species = "nobilis", size = 0.9)
 
 Distribution of Iberian *Abies*:
 
-```{r abies}
+```{r abies_together}
 abies <- get_distribution("Abies")
 map_distribution(abies)
+```
+
+You can also get one map per taxon (species):
+
+```{r abies_facet}
 map_distribution(abies, facet = TRUE, ncol = 1)
+```
+
+Or collapse all presences of the entire genus:
+
+```{r abies_collapse}
 map_distribution(abies, taxo.level = "genus", size = 0.9)
 ```
 
-Iberian Pines: 
+
+Another example with Iberian Pines: 
 
 ```{r pines}
 pinus <- get_distribution("Pinus")
@@ -104,7 +118,7 @@ cadiz <- mapSpain::esp_get_prov_siane("Cadiz", epsg = "4326")
 head(get_checklist(cadiz))
 ```
 
-You can also obtain an `sf` object rather than a dataframe, so you know where exactly each plant occurs within or near that polygon (with a resolution of 10x10 km inherited from the AFLIBER database):
+You can also obtain an `sf` object rather than a dataframe, so you know where each plant occurs within or near that polygon (with a resolution of 10x10 km inherited from the AFLIBER database):
 
 ```{r cadiz.qpyr, message=FALSE, cache = TRUE}
 cadiz.qpyr <- get_checklist(cadiz, sf = TRUE) |> 
@@ -129,6 +143,6 @@ citation("FloraIberica")
 
 The development of this software has been funded by Fondo Europeo de Desarrollo Regional (FEDER) and Consejería de Transformación Económica, Industria, Conocimiento y Universidades of Junta de Andalucía (proyecto US-1381388 led by Francisco Rodríguez Sánchez, Universidad de Sevilla).
 
-![](https://ecologyr.github.io/workshop/images/logos.png)
+![](man/figures/feder.png)
 
 

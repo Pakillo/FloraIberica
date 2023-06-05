@@ -1,5 +1,8 @@
 #' Get the distribution of one or more plant taxa
 #'
+#' Get the distribution of taxa on a 10 x 10 km UTM grid. Point coordinates
+#' represent the center of each grid cell, not actual plant locations.
+#'
 #' @inheritParams is_present
 #' @param sf Logical. Return a spatial (sf) or a plain dataframe?
 #'

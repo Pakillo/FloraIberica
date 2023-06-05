@@ -7,7 +7,8 @@
 get_distribution(genus = NULL, species = NULL, subspecies = NULL, sf = TRUE)
 }
 \arguments{
-\item{genus}{character. Required. One or more genera to check for presence.}
+\item{genus}{character. One or more genera to check for presence. Required,
+unless \code{gbif.id} is provided.}
 
 \item{species}{character. Optional. One or more species names to check for presence.
 The length of \code{genus} must equal that of \code{species}, unless length(genus) == 1,
@@ -23,7 +24,8 @@ in which case it will be assumed that all subspecies belong to that same species
 An sf object if sf = TRUE, a plain dataframe otherwise.
 }
 \description{
-Get the distribution of one or more plant taxa
+Get the distribution of taxa on a 10 x 10 km UTM grid. Point coordinates
+represent the center of each grid cell, not actual plant locations.
 }
 \examples{
 abies <- get_distribution("Abies")

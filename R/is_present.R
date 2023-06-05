@@ -1,8 +1,7 @@
-#' Is taxon present?
-#'
 #' Is taxon present in the Iberian Peninsula and/or Balearic Islands?
 #'
-#' @param genus character. Required. One or more genera to check for presence.
+#' @param genus character. One or more genera to check for presence. Required,
+#' unless `gbif.id` is provided.
 #' @param species character. Optional. One or more species names to check for presence.
 #' The length of `genus` must equal that of `species`, unless length(genus) == 1,
 #' in which case it will be assumed that all species belong to that same genus.

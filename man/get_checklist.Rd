@@ -11,7 +11,9 @@ get_checklist(zone = NULL, sf = FALSE)
 an \code{sf} object with a single point coordinate, or a polygon \code{sf} object.}
 
 \item{sf}{Logical. If FALSE (default) return a dataframe with the checklist.
-If TRUE, return an \code{sf} object with the coordinates where each taxa is found.}
+If TRUE, return an \code{sf} object with the coordinates where each taxa is found.
+Note these point coordinates represent the centre of 10 km resolution UTM grid cells,
+not the actual location of these plants.}
 }
 \value{
 A dataframe or sf object

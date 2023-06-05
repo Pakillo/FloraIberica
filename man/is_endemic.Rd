@@ -7,7 +7,8 @@
 is_endemic(genus = NULL, species = NULL, subspecies = NULL, gbif.id = NULL)
 }
 \arguments{
-\item{genus}{character. Required. One or more genera to check for presence.}
+\item{genus}{character. One or more genera to check for presence. Required,
+unless \code{gbif.id} is provided.}
 
 \item{species}{character. Optional. One or more species names to check for presence.
 The length of \code{genus} must equal that of \code{species}, unless length(genus) == 1,

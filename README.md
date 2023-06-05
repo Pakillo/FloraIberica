@@ -12,12 +12,17 @@ coverage](https://codecov.io/gh/Pakillo/FloraIberica/branch/master/graph/badge.s
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![HitCount](https://hits.dwyl.com/Pakillo/FloraIberica.svg?style=flat-square)](https://hits.dwyl.com/Pakillo/FloraIberica)
+[![HitCount: unique
+users](https://hits.dwyl.com/Pakillo/FloraIberica.svg?style=flat-square&show=unique)](https://hits.dwyl.com/Pakillo/FloraIberica)
+
 <!-- badges: end -->
 
 `FloraIberica` R package facilitates access to taxonomic and
 distribution data for the c. 6500 vascular plants present in the Iberian
 Peninsula and Balearic Islands, based on the [AFLIBER
-database](https://doi.org/10.1111/geb.13363).
+database](https://doi.org/10.1111/geb.13363). This atlas provides the
+distribution of each taxon in a 10 x 10 km UTM grid.
 
 ## Installation
 
@@ -31,7 +36,7 @@ remotes::install_github("Pakillo/FloraIberica")
 library(FloraIberica)
 ```
 
-### Checking if taxa are present
+### Checking if taxa are present in the Iberian Peninsula and/or Balearic Islands
 
 ``` r
 is_present(genus = "Laurus", species = c("nobilis", "azorica"))
@@ -50,27 +55,28 @@ is_endemic(genus = "Aconitum", species = "napellus",
 
 ### Getting the distribution of plant taxa
 
-Returns sf or dataframe:
+Returns sf or dataframe with the coordinates of the centre of 10 x 10 km
+UTM grid cells where taxa are present:
 
 ``` r
 get_distribution("Abies", "pinsapo")
-#> Simple feature collection with 30 features and 3 fields
+#> Simple feature collection with 30 features and 4 fields
 #> Geometry type: POINT
 #> Dimension:     XY
 #> Bounding box:  xmin: -5.522 ymin: 36.438 xmax: -4.401 ymax: 36.991
 #> Geodetic CRS:  WGS 84
 #> First 10 features:
-#>     Genus Species Subspecies              geometry
-#> 213 Abies pinsapo       <NA> POINT (-5.519 36.704)
-#> 214 Abies pinsapo       <NA> POINT (-5.522 36.794)
-#> 215 Abies pinsapo       <NA> POINT (-5.404 36.616)
-#> 216 Abies pinsapo       <NA> POINT (-5.407 36.706)
-#> 217 Abies pinsapo       <NA>  POINT (-5.41 36.796)
-#> 218 Abies pinsapo       <NA> POINT (-5.413 36.887)
-#> 219 Abies pinsapo       <NA> POINT (-5.287 36.438)
-#> 220 Abies pinsapo       <NA> POINT (-5.292 36.619)
-#> 221 Abies pinsapo       <NA> POINT (-5.298 36.799)
-#> 222 Abies pinsapo       <NA> POINT (-5.303 36.979)
+#>     Genus Species Subspecies UTM.cell              geometry
+#> 213 Abies pinsapo       <NA>  30STF76 POINT (-5.519 36.704)
+#> 214 Abies pinsapo       <NA>  30STF77 POINT (-5.522 36.794)
+#> 215 Abies pinsapo       <NA>  30STF85 POINT (-5.404 36.616)
+#> 216 Abies pinsapo       <NA>  30STF86 POINT (-5.407 36.706)
+#> 217 Abies pinsapo       <NA>  30STF87  POINT (-5.41 36.796)
+#> 218 Abies pinsapo       <NA>  30STF88 POINT (-5.413 36.887)
+#> 219 Abies pinsapo       <NA>  30STF93 POINT (-5.287 36.438)
+#> 220 Abies pinsapo       <NA>  30STF95 POINT (-5.292 36.619)
+#> 221 Abies pinsapo       <NA>  30STF97 POINT (-5.298 36.799)
+#> 222 Abies pinsapo       <NA>  30STF99 POINT (-5.303 36.979)
 ```
 
 ### Making distribution maps
@@ -92,21 +98,25 @@ abies <- get_distribution("Abies")
 map_distribution(abies)
 ```
 
-<img src="man/figures/README-abies-1.png" width="100%" />
+<img src="man/figures/README-abies_together-1.png" width="100%" />
+
+You can also get one map per taxon (species):
 
 ``` r
 map_distribution(abies, facet = TRUE, ncol = 1)
 ```
 
-<img src="man/figures/README-abies-2.png" width="100%" />
+<img src="man/figures/README-abies_facet-1.png" width="100%" />
+
+Or collapse all presences of the entire genus:
 
 ``` r
 map_distribution(abies, taxo.level = "genus", size = 0.9)
 ```
 
-<img src="man/figures/README-abies-3.png" width="100%" />
+<img src="man/figures/README-abies_collapse-1.png" width="100%" />
 
-Iberian Pines:
+Another example with Iberian Pines:
 
 ``` r
 pinus <- get_distribution("Pinus")
@@ -151,8 +161,8 @@ head(get_checklist(cadiz))
 ```
 
 You can also obtain an `sf` object rather than a dataframe, so you know
-where exactly each plant occurs within or near that polygon (with a
-resolution of 10x10 km inherited from the AFLIBER database):
+where each plant occurs within or near that polygon (with a resolution
+of 10x10 km inherited from the AFLIBER database):
 
 ``` r
 cadiz.qpyr <- get_checklist(cadiz, sf = TRUE) |> 
@@ -170,7 +180,6 @@ ggplot() +
 
 ``` r
 citation("FloraIberica")
-
 If you use FloraIberica, please cite both the data source and the
 package as:
 
@@ -196,4 +205,4 @@ Desarrollo Regional (FEDER) and Consejería de Transformación Económica,
 Industria, Conocimiento y Universidades of Junta de Andalucía (proyecto
 US-1381388 led by Francisco Rodríguez Sánchez, Universidad de Sevilla).
 
-![](https://ecologyr.github.io/workshop/images/logos.png)
+![](man/figures/feder.png)

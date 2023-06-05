@@ -19,7 +19,8 @@ map_distribution(
 \arguments{
 \item{distrib.sf}{An sf object as returned by \code{\link[=get_distribution]{get_distribution()}}.}
 
-\item{genus}{character. Required. One or more genera to check for presence.}
+\item{genus}{character. One or more genera to check for presence. Required,
+unless \code{gbif.id} is provided.}
 
 \item{species}{character. Optional. One or more species names to check for presence.
 The length of \code{genus} must equal that of \code{species}, unless length(genus) == 1,
@@ -47,8 +48,8 @@ or to \code{\link[ggplot2:ggsf]{ggplot2::geom_sf()}} if facet = FALSE.}
 A map and ggplot2 object
 }
 \description{
-Provide either an \code{sf} object (as returned by \code{\link[=get_distribution]{get_distribution()}})
-or genus, species, subspecies...
+Get a map with the distribution of one or more taxa. Must provide either
+an \code{sf} object (as returned by \code{\link[=get_distribution]{get_distribution()}}) or genus, species, subspecies...
 }
 \examples{
 laurus <- get_distribution("Laurus", "nobilis")
