@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">FloraIberica</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +60,9 @@ an <code>sf</code> object with a single point coordinate, or a polygon <code>sf<
 
 <dt>sf</dt>
 <dd><p>Logical. If FALSE (default) return a dataframe with the checklist.
-If TRUE, return an <code>sf</code> object with the coordinates where each taxa is found.</p></dd>
+If TRUE, return an <code>sf</code> object with the coordinates where each taxa is found.
+Note these point coordinates represent the centre of 10 km resolution UTM grid cells,
+not the actual location of these plants.</p></dd>
 
 </dl></div>
     <div class="section level2">
