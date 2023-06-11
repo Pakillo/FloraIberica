@@ -1,6 +1,7 @@
 ^FloraIberica\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
+README_cache
 ^data-raw$
 
 ^LICENSE\.md$

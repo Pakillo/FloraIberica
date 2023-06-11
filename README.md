@@ -116,12 +116,11 @@ map_distribution(abies, taxo.level = "genus", size = 0.9)
 
 <img src="man/figures/README-abies_collapse-1.png" width="100%" />
 
-Another example with Iberian Pines:
+Another example with Iberian pines:
 
 ``` r
-pinus <- get_distribution("Pinus")
 library(ggplot2)
-map_distribution(pinus, facet = TRUE, ncol = 2) + 
+map_distribution(genus = "Pinus", facet = TRUE, ncol = 2) + 
   theme(axis.text = element_text(size = 6))
 ```
 

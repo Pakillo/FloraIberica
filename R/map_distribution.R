@@ -144,7 +144,7 @@ map_many_taxa <- function(distrib.sf = NULL,
 
     mapa <- ggplot() +
       facet_wrap(~Taxon, ...) +
-      geom_sf(col = colour, data = distrib.sf, pch = 15, size = 0.8) +
+      geom_sf(col = colour, data = distrib.sf, pch = 15, size = 0.7) +
       geom_sf(data = IberianPeninsula, fill = NA) +
       theme_bw() +
       theme(strip.background = element_blank())
