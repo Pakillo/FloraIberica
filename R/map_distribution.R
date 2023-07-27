@@ -5,8 +5,9 @@
 #'
 #' @param distrib.sf An sf object as returned by [get_distribution()].
 #' @inheritParams is_present
-#' @param taxo.level character Taxonomic level to show in the map. Either genus,
-#' species (default) or subspecies.
+#' @param taxo.level character Taxonomic level to show in the map. Either 'genus',
+#' 'species' (default) or 'subspecies'. If 'subspecies' argument is provided,
+#' taxo.level is automatically changed to 'subspecies'.
 #' @param facet Logical. For multiple taxa, make a single map with all taxa together,
 #' or make a multipanel (facetted) figure with one panel per taxa?
 #' @param colour character. When there is >1 taxon, only used if facet = TRUE.
@@ -30,6 +31,11 @@
 #' map_distribution(abies)
 #' map_distribution(abies, facet = TRUE, ncol = 1)
 #' map_distribution(abies, taxo.level = "genus")
+#'
+#' # Map all the subspecies of a species
+#' map_distribution(genus = "Berberis", species = "vulgaris", taxo.level = "subspecies")
+#' map_distribution(genus = "Berberis", species = "vulgaris", subspecies = "seroi")
+
 map_distribution <- function(distrib.sf = NULL,
                              genus = NULL,
                              species = NULL,
@@ -62,11 +68,26 @@ map_distribution <- function(distrib.sf = NULL,
                                    subspecies = subspecies, sf = TRUE)
   }
 
+  if (!is.null(subspecies)) {
+    if (taxo.level != "subspecies") {
+      message("Since subspecies are provided, changing taxo.level to 'subspecies'")
+      taxo.level <- "subspecies"
+    }
+  }
+
+  if (!is.null(species)) {
+    if (taxo.level == "genus") {
+      message("Since species are provided, changing taxo.level to 'species'")
+      taxo.level <- "species"
+    }
+  }
+
   if (taxo.level == "species") {
     distrib.sf$Subspecies <- NA
   }
 
   if (taxo.level == "genus") {
+    distrib.sf$Subspecies <- NA
     distrib.sf$Species <- NA
   }
 

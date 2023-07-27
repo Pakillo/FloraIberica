@@ -30,8 +30,9 @@ in which case it will be assumed that all species belong to that same genus.}
 The length of \code{species} must equal that of \code{subspecies}, unless length(species) == 1,
 in which case it will be assumed that all subspecies belong to that same species.}
 
-\item{taxo.level}{character Taxonomic level to show in the map. Either genus,
-species (default) or subspecies.}
+\item{taxo.level}{character Taxonomic level to show in the map. Either 'genus',
+'species' (default) or 'subspecies'. If 'subspecies' argument is provided,
+taxo.level is automatically changed to 'subspecies'.}
 
 \item{facet}{Logical. For multiple taxa, make a single map with all taxa together,
 or make a multipanel (facetted) figure with one panel per taxa?}
@@ -61,4 +62,8 @@ abies <- get_distribution("Abies")
 map_distribution(abies)
 map_distribution(abies, facet = TRUE, ncol = 1)
 map_distribution(abies, taxo.level = "genus")
+
+# Map all the subspecies of a species
+map_distribution(genus = "Berberis", species = "vulgaris", taxo.level = "subspecies")
+map_distribution(genus = "Berberis", species = "vulgaris", subspecies = "seroi")
 }
