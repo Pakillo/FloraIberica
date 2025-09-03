@@ -17,11 +17,12 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/Pakillo/FloraIberica/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Pakillo/FloraIberica/actions/workflows/R-CMD-check.yaml)
-[![Codecov test coverage](https://codecov.io/gh/Pakillo/FloraIberica/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Pakillo/FloraIberica?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/Pakillo/FloraIberica/graph/badge.svg)](https://app.codecov.io/gh/Pakillo/FloraIberica)
 `r badger::badge_lifecycle("stable")`
 `r badger::badge_repostatus("Active")`
 [![HitCount](https://hits.dwyl.com/Pakillo/FloraIberica.svg?style=flat-square)](https://hits.dwyl.com/Pakillo/FloraIberica)
 [![HitCount: unique users](https://hits.dwyl.com/Pakillo/FloraIberica.svg?style=flat-square&show=unique)](https://hits.dwyl.com/Pakillo/FloraIberica)
+
 
 <!-- badges: end -->
 
