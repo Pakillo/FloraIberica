@@ -31,5 +31,7 @@ is_present("Laurus")
 is_present("Laurus", "nobilis")
 is_present("Laurus", "azorica")
 is_present("Laurus", c("nobilis", "azorica"))
+is_present("Laurus", c("nobilis", "communis"))
+is_present("Laurus", "nobilis", subspecies = "excelsa")
 is_present(gbif.id = "3034015")
 }

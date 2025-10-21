@@ -18,6 +18,8 @@
 #' is_present("Laurus", "nobilis")
 #' is_present("Laurus", "azorica")
 #' is_present("Laurus", c("nobilis", "azorica"))
+#' is_present("Laurus", c("nobilis", "communis"))
+#' is_present("Laurus", "nobilis", subspecies = "excelsa")
 #' is_present(gbif.id = "3034015")
 is_present <- function(genus = NULL,
                        species = NULL,
@@ -74,16 +76,30 @@ is_present <- function(genus = NULL,
 
     ## Find out if taxa are present ##
 
+    # if only genus is provided, check genus
     if (is.null(species) & is.null(subspecies)) {
       out <- genus %in% Taxa$Genus
     }
 
+    # if genus and species are provided, check both
     if (!is.null(species) & is.null(subspecies)) {
-      out <- genus %in% Taxa$Genus & species %in% Taxa$Species
+      out <- vector(mode = "logical", length = length(species))
+      for (i in seq_along(species)) {
+        out[i] <- ifelse(any(Taxa$Genus == genus[i] & Taxa$Species == species[i],
+                               na.rm = TRUE),
+                           TRUE,
+                           FALSE)
+      }
     }
 
     if (!is.null(subspecies)) {
-      out <- genus %in% Taxa$Genus & species %in% Taxa$Species & subspecies %in% Taxa$Subspecies
+      out <- vector(mode = "logical", length = length(subspecies))
+      for (i in seq_along(subspecies)) {
+        out[i] <- ifelse(any(Taxa$Genus == genus[i] & Taxa$Species == species[i] &
+                                 Taxa$Subspecies == subspecies[i], na.rm = TRUE),
+                           TRUE,
+                           FALSE)
+      }
     }
 
     ## Get taxon name
